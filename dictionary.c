@@ -16,6 +16,21 @@
 
 #define HTSIZE 1024
 
+// create a linked list struct for nodes
+typedef struct node
+    {
+        // the value to store in this node
+        char word[LENGTH+1];
+
+        // the link to the next node in the list
+        struct node* next_node;
+    }
+    node;
+    // initialize the hash table
+   node* hashtable[HTSIZE];
+    
+
+int counter = 0;
 
 /**
  * Returns true if word is in dictionary else false.
@@ -43,36 +58,26 @@ bool load(const char* dictionary)
         return 0;
     }
     
-    // create a linked list struct for nodes
-    
-        typedef struct node
-            {
-                // the value to store in this node
-                char word[LENGTH+1];
-
-                // the link to the next node in the list
-                struct node* next_node;
-            }
-                node;
-                
-        char word[LENGTH+1];
-        while ( fscanf(fp, "%s", word) != EOF)  
-        {
-            // malloc a node* for each new word
-            node* next_node = malloc(sizeof(node));
-            fscanf(fp, "%s", next_node->word);          
-        }
-               
+    char word[LENGTH+1];
+    while ( fscanf(fp, "%s", word) != EOF)  
+    {
+        // malloc a node* for each new word
+        node* next_node = malloc(sizeof(node));
+        
+        fscanf(fp, "%s", next_node->word);  
+        
+        
+    }
+      
         // my hash function
         unsigned int hash(char* word);
         {
             int hash = tolower(word[0]) - 'a';
+            
             return hash % HTSIZE;    
         }
                         
-            
-    
-    
+                        
     return false;
     
 }
