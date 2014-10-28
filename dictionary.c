@@ -30,7 +30,6 @@ typedef struct node
    node* hashtable[HTSIZE];
     
 
-int counter = 0;
 
 /**
  * Returns true if word is in dictionary else false.
